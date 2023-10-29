@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="row">
+      <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Candidate list</li>
+            </ol>
+          </nav>
+      </div>
+  </div>
+
+  <h1> <center>Candidate list</center> </h1>
+  </br>
+
+  {% for position in position_list %} 
+    &nbsp<h1>{{ position }}</h1>&nbsp
+    {% for candidate in candidate_list %}
+      {% if candidate.positions_id == position.id %}
+
+        <div class="card">
+          <!-- <div class="card-header"> {{ candidate }} </div> -->
+          <div class="card-body">          
+            <p class="card-text">
+              <ol>
+                <img src="{{ candidate.candidate_image.url }}" 
+                    class="rounded float-right border shadow p-3" width="200px" height="180px"> 
+                <li><strong>Name</strong> - {{ candidate.first_name }} {{ candidate.last_name }}</li>
+                <li><strong>Email address</strong> - {{ candidate.email }}</li>
+                <li><strong>Phone no.</strong> - {{ candidate.mobile_no }}</li>
+                <li><strong>Description</strong> - {{ candidate.description }}</li>
+              </ol>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">In maintainance!!</small>
+          </div>
+        </div>
+
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  <style>
+    h1 {text-align: center;}
+  </style>
+
+
+{% endblock %}
+
+
+
+
+
+
+ 
+
+
+
+

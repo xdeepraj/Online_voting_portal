@@ -1,0 +1,24 @@
+1. Install Python & Set the environment path,
+        	1. C:\Python310\
+		2. C:\Python310\Scripts\
+2. locate this location (django_project\online_voting_4) from cmd or git bash
+3. run below commands-
+		1. pip install virtualenv
+		2. pip install pipenv 
+4. create a virtual enviournment. (virtualenv mypython)
+5. activate the virtual enviournment. (mypyton\Scripts\activate)
+6. run below commands-
+		1. cd online_voting_4
+		2. pip install -r requirements.txt
+		3. python manage.py makemigrations
+		4. python manage.py migrate
+		5. python manage.py runserver
+7.go to http://127.0.0.1:8000/ to run the project
+
+
+
+
+
+
+
+

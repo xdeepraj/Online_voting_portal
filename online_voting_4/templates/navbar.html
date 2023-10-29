@@ -1,0 +1,49 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="{% url 'home' %}">Voting Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        {% if user.is_superuser and user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'add_candidate' %}">add_candidate</a>
+          </li>
+        {% endif %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'candidate_list' %}">Candidates</a>
+        </li>
+        
+
+        <!-- User authentication -->
+
+        {% if user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'vote_index' %}">Vote</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'log_out' %}">Log out</a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'sign_up' %}">Register</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'log_in' %}">Log in</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% if user.is_authenticated%}
+      <div class="nav-item active">
+        <span class="badge badge-pill badge-success float-end">Hi {{ user.first_name }}!!!</span>
+      </div>
+      <a class="nav-item active nav-link material-icons float-end" href="{% url 'user_profile' user.id %}">account_circle</a>
+    {% endif %}
+    
+  </nav>

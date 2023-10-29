@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+</br>
+
+{% if user.is_authenticated%}
+    <center>
+    <h1> Welcome to the voting portal!</h1>
+    <a href="{% url 'candidate_list' %}"> Click here </a> to see the candidate list!!!
+
+{% else %}
+    <h1> Welcome to the voting portal!</h1>
+    <h2> Please login to provite vote or add a candidate(admin only)!!!</h2>
+    <a href="{% url 'candidate_list' %}"> Click here </a> to see the candidate list!!!
+{% endif %}
+
+{% endblock %}

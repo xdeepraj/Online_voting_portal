@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+</br>
+
+{% if form.errors %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong> Ther was an error with the form!! {{ form.errors }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+    
+        <center><h1> Register </h1></center>
+    </br></br>
+
+        <form action="{% url 'sign_up' %}" method=POST enctype='multipart/form-data'>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+        </br></br>
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+   
+{% endblock %}

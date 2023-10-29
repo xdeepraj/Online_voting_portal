@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class ="text-center mb-3">Poll Questions</h1>
+    {% if latest_position_list %}
+        {% for position in latest_position_list %}
+        <div class ="card-mb-3">
+            <div class ="card-body">
+                <p class ="lead">{{ position }}</p>
+                <form action="{% url 'detail' position.id %}">
+                    <input type="submit" value="Vote Now" class ="btn btn-success"\>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No polls available</p>
+    {% endif %}
+
+{% endblock %}

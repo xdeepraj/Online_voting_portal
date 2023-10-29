@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+</br>
+{% if user.is_authenticated %}
+    <center>
+        <h1>Add candidate to the voting panel</h1>
+        Logged in User: {{ user.first_name }} {{ user.last_name }}
+    </br></br></br>
+
+    {% if submitted %}
+        Candidate is added successfully!!
+    {% else %}
+        <form action="" method=POST enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+    {% endif%}
+    </center>
+{% else %}
+    <h1> Please login to access this page!!!</h1>
+    <h2> <a href="{% url 'login' %}"> Login here </a></h2>
+
+{% endif %}
+{% endblock %}
